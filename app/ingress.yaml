@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-wil
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "ca-issuer"
+    cert-manager.io/usages: "server auth, client auth, key agreement, digital signature"
+spec:
+  tls:
+  - hosts:
+    - app-wil.iot.local
+    - app-wil
+    secretName: app-wil-iot-local-tls
+  rules:
+  - host: "hawt.iot.local"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app
+            port:
+              number: 80
