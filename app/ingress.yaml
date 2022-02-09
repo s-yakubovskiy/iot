@@ -15,7 +15,7 @@ spec:
     - app-wil
     secretName: app-wil-iot-local-tls
   rules:
-  - host: "hawt.iot.local"
+  - host: "app-wil.iot.local"
     http:
       paths:
       - pathType: Prefix

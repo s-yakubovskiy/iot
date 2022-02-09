@@ -6,7 +6,7 @@ metadata:
     app: app
   name: app
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 80
     targetPort: 8888
